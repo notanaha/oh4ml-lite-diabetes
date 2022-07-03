@@ -1,0 +1,4 @@
+$schema: https://azuremlschemas.azureedge.net/latest/batchEndpoint.schema.json
+name: ep-batch-oh4ml-01
+description: endpoint for batch oh4ml-01
+auth_mode: aad_token

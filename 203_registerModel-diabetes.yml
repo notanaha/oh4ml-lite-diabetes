@@ -1,0 +1,18 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+experiment_name: register_model_oh4ml
+description: register diabetes model oh4ml
+type: command
+code: ./scripts
+command: >-
+  python register.py
+  --model_name ${{inputs.model_name}} 
+  --model_path ${{inputs.model_path}} 
+  --deploy_flag ${{inputs.deploy_flag}}
+environment: azureml:diabetes-env-02@latest
+compute: azureml:demo-cpucluster1
+inputs:
+  model_name: diabetes_model_oh4ml
+  model_path:
+    type: uri_folder 
+    path: azureml://datastores/workspaceblobstore/paths/diabetes_oh4ml/
+  deploy_flag: 1

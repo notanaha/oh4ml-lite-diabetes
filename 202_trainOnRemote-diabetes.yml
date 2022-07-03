@@ -1,0 +1,21 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+experiment_name: train-diabetes-oh4ml
+description: train diabetes oh4ml
+type: command
+code: ./scripts
+command: >-
+  python train-diabetes.py 
+  --input_data ${{inputs.diabetes_data}} 
+  --model_output ${{outputs.model_output}}
+environment: azureml:diabetes-env-02@latest
+inputs:
+  diabetes_data:
+    type: uri_file
+    path: azureml:diabetes_data_oh4ml@latest
+outputs:
+  model_output:
+    type: uri_folder 
+    path: azureml://datastores/workspaceblobstore/paths/diabetes_oh4ml/
+    mode: mount
+compute: azureml:demo-cpucluster1
+

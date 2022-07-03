@@ -1,0 +1,6 @@
+$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+name: diabetes-env-02
+image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
+version: 1
+conda_file: ./environments/diabetes-env-02.yml
+description: diabetes env 02
