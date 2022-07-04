@@ -2,8 +2,8 @@ $schema: https://azuremlschemas.azureedge.net/latest/batchDeployment.schema.json
 name: batch-deployment-02
 endpoint_name: ep-batch-oh4ml-01
 code_configuration:
-  code: ./src
-  scoring_script: score.py
+  code: ../scripts
+  scoring_script: score-diabetes.py
 model: azureml:diabetes_model_oh4ml@latest
 environment: azureml:diabetes-env-02@latest
 compute: azureml:demo-cpucluster1

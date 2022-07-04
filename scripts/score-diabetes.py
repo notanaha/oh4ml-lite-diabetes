@@ -1,5 +1,4 @@
 ﻿import os
-import pandas as pd
 import numpy as np
 from mlflow.pyfunc import load_model
 
@@ -21,4 +20,4 @@ def run(mini_batch):
         log_txt = 'Predictions:' + str(predictions)
         print (log_txt)
 
-    return pd.DataFrame(predictions) # return a dataframe or a list
+    return [[row, pred] for row, pred in enumerate(predictions)] # return a dataframe or a list
