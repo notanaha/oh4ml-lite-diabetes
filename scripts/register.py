@@ -35,9 +35,9 @@ def main():
     model_name = args.model_name
     model_path = args.model_path
 
-#    with open((Path(args.deploy_flag) / "deploy_flag"), 'rb') as f:
-#        deploy_flag = int(f.read())
-    deploy_flag = int(args.deploy_flag)
+    with open((Path(args.deploy_flag) / "deploy_flag"), 'rb') as f:
+        deploy_flag = int(f.read())
+#    deploy_flag = int(args.deploy_flag)
 
     if deploy_flag==1:
         

@@ -11,8 +11,10 @@ command: >-
 environment: azureml:diabetes-env-02@latest
 compute: azureml:demo-cpucluster1
 inputs:
-  model_name: diabetes_model_oh4ml
+  model_name: diabetes_model_oh4ml-02
   model_path:
     type: uri_folder 
-    path: azureml://datastores/workspaceblobstore/paths/diabetes_oh4ml/
-  deploy_flag: 1
+    path: azureml://datastores/workspaceblobstore/paths/diabetes_oh4ml-02/models
+  deploy_flag:
+    type: uri_file
+    path: azureml:azureml_sharp_cart_lnqkl0zbt7_output_data_deploy_flag:1

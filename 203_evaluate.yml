@@ -1,0 +1,20 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+experiment_name: evaluate_model
+description: evaluate model
+type: command
+code: ./scripts
+command: >-
+  python evaluate.py 
+  --model_dir ${{inputs.model_dir}} 
+  --experiment_name ${{inputs.experiment_name}}
+  --deploy_flag ${{outputs.deploy_flag}}
+environment: azureml:diabetes-env-02@latest
+inputs:
+  model_dir:
+    type: uri_folder
+    path: azureml://datastores/workspaceblobstore/paths/diabetes_oh4ml-03
+  experiment_name: train-diabetes-oh4ml-03
+outputs:
+  deploy_flag:
+compute: azureml:demo-cpucluster1
+
