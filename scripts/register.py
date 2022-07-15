@@ -3,17 +3,14 @@
 
 import argparse
 from pathlib import Path
-import pickle
 
 import mlflow
 from mlflow.pyfunc import load_model
 
-from azureml.core import Run
-
 # Get run
-run = Run.get_context()
-run_id = run.get_details()["runId"]
-print(run_id)
+run = mlflow.start_run()
+run_id = run.info.run_id
+print("run_id: ", run_id)
 
 def parse_args():
 
@@ -35,9 +32,11 @@ def main():
     model_name = args.model_name
     model_path = args.model_path
 
-    with open((Path(args.deploy_flag) / "deploy_flag"), 'rb') as f:
-        deploy_flag = int(f.read())
-#    deploy_flag = int(args.deploy_flag)
+    if len(args.deploy_flag) == 1:   # this is the case where deploy_flag is a digit
+        deploy_flag = int(args.deploy_flag)
+    else:                            # this is the case where deploy_flag is a path name
+        with open((Path(args.deploy_flag) / "deploy_flag"), 'rb') as f:
+            deploy_flag = int(f.read())
 
     if deploy_flag==1:
         
@@ -54,6 +53,9 @@ def main():
         
     else:
         print("Model will not be registered!")
+
+    mlflow.end_run()
+
 
 if __name__ == "__main__":
     main()
