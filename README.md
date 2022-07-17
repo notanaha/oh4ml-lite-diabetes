@@ -1,7 +1,7 @@
 # oh4ml-lite-diabetes
 Run in the following order
 <br>
-Evaluate and Model register will fail unless input arguments in the scripts were corrected appropriately
+Confirm input/output configuration in a yml file before creating a job 
 <br>
 
 |  task    |  command  |
