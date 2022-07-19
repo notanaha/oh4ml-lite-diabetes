@@ -7,11 +7,6 @@ from pathlib import Path
 import mlflow
 from mlflow.pyfunc import load_model
 
-# Get run
-run = mlflow.start_run()
-run_id = run.info.run_id
-print("run_id: ", run_id)
-
 def parse_args():
 
     parser = argparse.ArgumentParser()
@@ -26,6 +21,11 @@ def parse_args():
 
 
 def main():
+
+    # Get run
+    run = mlflow.start_run()
+    run_id = run.info.run_id
+    print("run_id: ", run_id)
 
     args = parse_args()
 
