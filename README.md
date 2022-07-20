@@ -1,4 +1,23 @@
 # oh4ml-lite-diabetes
+
+# setup
+
+## conda environment for 200_prepareData.ipynb
+
+```bash
+conda env create -f environment.yml
+conda activate env-oh4ml-lite-diabetes
+conda install notebook ipykernel
+ipython kernel install --user --name=env-oh4ml-lite-diabetes
+```
+
+## az login for az ml commands
+
+```bash
+az login --use-device-code
+```
+
+# run
 Run in the following order
 <br>
 Confirm input/output configuration in a yml file before creating a job 
