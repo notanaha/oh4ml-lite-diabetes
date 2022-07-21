@@ -12,8 +12,8 @@ environment: azureml:diabetes-env-02@latest
 inputs:
   model_dir:
     type: uri_folder
-    path: azureml://datastores/workspaceblobstore/paths/diabetes_oh4ml-03
-  experiment_name: train-diabetes-oh4ml-03
+    path: azureml://datastores/workspaceblobstore/paths/diabetes_oh4ml
+  experiment_name: train-diabetes-oh4ml-01
 outputs:
   deploy_flag:
 compute: azureml:demo-cpucluster1

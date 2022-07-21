@@ -1,7 +1,7 @@
 ﻿# Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
 
-import argparse
+import argparse, os
 from pathlib import Path
 
 import mlflow
@@ -42,8 +42,7 @@ def main():
         
         print("Registering ", model_name)
 
-#        model = pickle.load(open((Path(model_path) / "model.pkl"), "rb"))
-        model = load_model(model_path) 
+        model = load_model(os.path.join(model_path, 'models')) 
         # log model using mlflow 
         mlflow.sklearn.log_model(model, model_name)
 

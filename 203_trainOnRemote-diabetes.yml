@@ -1,5 +1,5 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
-experiment_name: train-diabetes-oh4ml-03
+experiment_name: train-diabetes-oh4ml-01
 description: train diabetes oh4ml
 type: command
 code: ./scripts
@@ -12,11 +12,10 @@ inputs:
   diabetes_data:
     type: uri_file
     path: azureml:diabetes_data_oh4ml@latest
-  mlflow_exp_name: train-diabetes-oh4ml-03
 outputs:
   output_dir:
     type: uri_folder 
-    path: azureml://datastores/workspaceblobstore/paths/diabetes_oh4ml-03/
+    path: azureml://datastores/workspaceblobstore/paths/diabetes_oh4ml/
     mode: mount
 compute: azureml:demo-cpucluster1
 

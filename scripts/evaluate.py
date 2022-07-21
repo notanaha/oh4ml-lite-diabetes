@@ -2,8 +2,10 @@ import argparse, os, json
 from pathlib import Path
 from azureml.core import Run
 import mlflow
+from mlflow.tracking import MlflowClient
 
 # some housekeeping before running the script
+# client = MlflowClient()
 run = Run.get_context()
 ws = run.experiment.workspace
 tracking_uri = ws.get_mlflow_tracking_uri()
@@ -41,19 +43,21 @@ def main():
     run_id = metric['run_id']
     last_rmse = metric['RMSE']
 
-
+    all_runs = None
     experiments = mlflow.get_experiment_by_name(args.experiment_name)
     # Get run history
-    all_runs = mlflow.search_runs(
-        experiment_ids = experiments.experiment_id)
-    #all_runs
+    if experiments is not None:
+        all_runs = mlflow.search_runs(
+            experiment_ids=experiments.experiment_id
+            )
+    all_runs
     print(all_runs)
     print("rmse in last run: ", last_rmse)
 
     # Filter experiments that FINISHED, and drop the last run  
     filtered_rows  = all_runs[(all_runs["status"] == "FINISHED") & (all_runs["run_id"] != run_id)]
 
-    if len(filtered_rows) > 0:
+    if len(filtered_rows) > 0 :
         # Sort by RMSE
         sorted_rows = filtered_rows.sort_values(by='metrics.rmse')  # ascending order
         print("rmse in past runs: ", sorted_rows.iloc[0,:]["metrics.rmse"])
