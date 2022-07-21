@@ -1,0 +1,15 @@
+channels:
+  - defaults
+  - anaconda
+  - conda-forge
+dependencies:
+  - python=3.10.4
+  - pip
+  - pip:
+      - azure-ai-ml==0.1.0b5
+      - scikit-learn==1.0.2
+      - pandas==1.1.5
+      - numpy==1.23.1
+      - joblib==1.0.0
+      - matplotlib==3.3.3
+name: env-oh4ml-lite-diabetes

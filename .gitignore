@@ -1,7 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 .ipynb_checkpoints/
-.vscode/
+.ipynb_aml_checkpoints/
 data/
 models/
 scripts/__pycache__/
@@ -10,3 +10,7 @@ scripts/*.amltmp
 scripts/.amlignore
 *.amltmp
 .amlignore
+
+config.json
+diabetes_data.csv
+diabetes_query.csv

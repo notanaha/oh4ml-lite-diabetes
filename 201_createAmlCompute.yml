@@ -1,0 +1,7 @@
+$schema: https://azuremlschemas.azureedge.net/latest/amlCompute.schema.json 
+name: demo-cpucluster1
+type: amlcompute
+size: Standard_D4as_v4
+min_instances: 0
+max_instances: 2
+idle_time_before_scale_down: 120
