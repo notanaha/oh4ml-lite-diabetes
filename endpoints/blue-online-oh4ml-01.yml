@@ -1,0 +1,10 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
+name: blue
+endpoint_name: ep-online-oh4ml-01
+model: azureml:diabetes_model_oh4ml@latest
+code_configuration:
+  code: ../scripts/
+  scoring_script: score_blue.py
+environment: azureml:diabetes-env-02@latest
+instance_type: Standard_DS2_v2
+instance_count: 1
