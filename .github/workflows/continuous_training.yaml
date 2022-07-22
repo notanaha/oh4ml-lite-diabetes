@@ -14,7 +14,7 @@ jobs:
     - name: az CLI login
       uses: azure/login@v1
       with:
-         creds: '${{ secrets.AZURE_CREDENTIALS }}'
+         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Install ML extension for az command
       run: az extension add -n ml -y
     - name: Create ML Job
