@@ -3,7 +3,10 @@ on:
   push:
     branches:
       - 'main'
-      
+permissions:
+      id-token: write
+      contents: read
+
 jobs: 
   job-deploy:
     runs-on: ubuntu-latest
