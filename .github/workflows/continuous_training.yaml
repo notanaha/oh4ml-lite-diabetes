@@ -3,23 +3,23 @@ on:
   push:
     branches:
       - 'main'
-
 permissions:
       id-token: write
       contents: read
-      
+
 jobs: 
   job-deploy:
     runs-on: ubuntu-latest
+    environment: oh4ml-environment
     steps:
     - name: Checkout
       uses: actions/checkout@v3
     - name: az CLI login
       uses: azure/login@v1
       with:
-         client-id: ${{ secrets.AZURE_CLIENT_ID }}
-         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     - name: Install ML extension for az command
       run: az extension add -n ml -y
     - name: Create ML Job
